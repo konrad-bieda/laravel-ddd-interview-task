@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Invoices\Infrastructure\Database\Seeders;
 
-use App\Domain\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
 use Faker\Factory;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\Seeder;
@@ -14,8 +14,9 @@ use Ramsey\Uuid\Uuid;
 class InvoiceSeeder extends Seeder
 {
     public function __construct(
-        private ConnectionInterface $db
-    ) {
+        private readonly ConnectionInterface $db
+    )
+    {
     }
 
     public function run(): void
@@ -46,7 +47,6 @@ class InvoiceSeeder extends Seeder
 
     private function addInvoiceProductLines(Collection $products, array $invoices): void
     {
-
         $lines = [];
 
         foreach ($invoices ?? [] as $invoice) {
