@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Shared\Infrastructure\Database\Factories;
+namespace App\Modules\Invoices\Infrastructure\Database\Factories;
 
 use App\Modules\Invoices\Infrastructure\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;

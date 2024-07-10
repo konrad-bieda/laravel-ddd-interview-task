@@ -7,7 +7,8 @@ use App\Domain\Invoice\Enums\StatusEnum;
 use App\Infrastructure\Exceptions\NotFound;
 use App\Modules\Approval\Api\ApprovalFacadeInterface;
 use App\Modules\Approval\Api\Dto\ApprovalDto;
-use App\Modules\Invoices\Repositories\InvoiceRepositoryInterface;
+use App\Modules\Invoices\Infrastructure\Mappers\InvoiceEntityMapper;
+use App\Modules\Invoices\Infrastructure\Repositories\InvoiceModelRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -18,15 +19,21 @@ use Ramsey\Uuid\Uuid;
 readonly class InvoiceService
 {
     public function __construct(
-        private InvoiceRepositoryInterface $repository,
-        private ApprovalFacadeInterface    $approvalFacade
+        private InvoiceModelRepository  $repository,
+        private ApprovalFacadeInterface $approvalFacade
     )
     {
     }
 
     public function getOne(string $id): ?InvoiceEntity
     {
-        return $this->repository->findById($id);
+        $invoice = $this->repository->findById($id);
+
+        if (!$invoice) {
+            return null;
+        }
+
+        return InvoiceEntityMapper::map($invoice);
     }
 
     /**

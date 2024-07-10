@@ -3,8 +3,8 @@
 namespace App\Modules\Invoices\Infrastructure\Models;
 
 use App\Modules\Invoices\Infrastructure\Builders\ProductBuilder;
+use App\Modules\Invoices\Infrastructure\Database\Factories\ProductFactory;
 use App\Modules\Invoices\Infrastructure\Models\Traits\HasTimestampsColumns;
-use App\Modules\Shared\Infrastructure\Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

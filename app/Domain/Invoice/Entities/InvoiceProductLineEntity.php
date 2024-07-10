@@ -7,7 +7,6 @@ use Carbon\Carbon;
 class InvoiceProductLineEntity
 {
     public function __construct(
-        private InvoiceEntity    $invoice,
         private ProductEntity    $product,
         private int              $quantity,
         private readonly ?string $id = null,
@@ -20,16 +19,6 @@ class InvoiceProductLineEntity
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-    public function getInvoice(): InvoiceEntity
-    {
-        return $this->invoice;
-    }
-
-    public function setInvoice(InvoiceEntity $invoice): void
-    {
-        $this->invoice = $invoice;
     }
 
     public function getProduct(): ProductEntity
@@ -81,7 +70,6 @@ class InvoiceProductLineEntity
     {
         return [
             'id' => $this->getId(),
-            'invoice' => $this->getInvoice()->toArray(),
             'product' => $this->getProduct()->toArray(),
             'quantity' => $this->getQuantity(),
             'createdAt' => $this->getCreatedAt(),

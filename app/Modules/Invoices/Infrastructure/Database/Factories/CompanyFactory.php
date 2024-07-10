@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Shared\Infrastructure\Database\Factories;
+namespace App\Modules\Invoices\Infrastructure\Database\Factories;
 
 use App\Modules\Invoices\Infrastructure\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -23,7 +23,7 @@ class CompanyFactory extends Factory
             'city' => $this->faker->city(),
             'zip' => $this->faker->postcode(),
             'phone' => $this->faker->phoneNumber(),
-            'email' => $this->faker->email(),
+            'email' => $this->faker->safeEmail(),
         ];
     }
 }
