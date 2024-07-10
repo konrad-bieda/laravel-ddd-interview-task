@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Invoices\Infrastructure\Database\Factories;
+namespace App\Modules\Shared\Infrastructure\Database\Factories;
 
-use App\Domain\Invoice\Models\Company;
+use App\Domain\Shared\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 

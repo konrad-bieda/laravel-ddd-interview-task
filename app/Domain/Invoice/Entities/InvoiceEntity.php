@@ -2,41 +2,29 @@
 
 namespace App\Domain\Invoice\Entities;
 
+use App\Domain\Shared\Entities\CompanyEntity;
 use App\Domain\Shared\Enums\StatusEnum;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 class InvoiceEntity
 {
-    private string $id;
-    private string $number;
-    private Carbon $date;
-    private Carbon $dueDate;
-    private string $companyId;
-    private StatusEnum $status;
-    private Carbon $createdAt;
-    private Carbon $updatedAt;
-
     public function __construct(
-        string $number,
-        Carbon $date,
-        Carbon $dueDate,
-        string $companyId,
-        StatusEnum $status,
-        ?string $id = null,
-        ?Carbon $createdAt = null,
-        ?Carbon $updatedAt = null
-    ) {
-        $this->id = $id;
-        $this->number = $number;
-        $this->date = $date;
-        $this->dueDate = $dueDate;
-        $this->companyId = $companyId;
-        $this->status = $status;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
+        private string           $number,
+        private Carbon           $date,
+        private Carbon           $dueDate,
+        private StatusEnum       $status,
+        private readonly ?string $id = null,
+        private ?Carbon          $createdAt = null,
+        private ?Carbon          $updatedAt = null,
+        private ?CompanyEntity   $company = null,
+        private ?CompanyEntity   $billedCompany = null,
+        private ?Collection      $products = null
+    )
+    {
     }
 
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -46,9 +34,19 @@ class InvoiceEntity
         return $this->number;
     }
 
+    public function setNumber(string $number): void
+    {
+        $this->number = $number;
+    }
+
     public function getDate(): Carbon
     {
         return $this->date;
+    }
+
+    public function setDate(Carbon $date): void
+    {
+        $this->date = $date;
     }
 
     public function getDueDate(): Carbon
@@ -56,9 +54,9 @@ class InvoiceEntity
         return $this->dueDate;
     }
 
-    public function getCompanyId(): string
+    public function setDueDate(Carbon $dueDate): void
     {
-        return $this->companyId;
+        $this->dueDate = $dueDate;
     }
 
     public function getStatus(): StatusEnum
@@ -66,14 +64,75 @@ class InvoiceEntity
         return $this->status;
     }
 
-    public function getCreatedAt(): Carbon
+    public function setStatus(StatusEnum $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
-    public function getUpdatedAt(): Carbon
+    public function setCreatedAt(?Carbon $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?Carbon $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    public function getCompany(): ?CompanyEntity
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?CompanyEntity $company): void
+    {
+        $this->company = $company;
+    }
+
+    public function getBilledCompany(): ?CompanyEntity
+    {
+        return $this->billedCompany;
+    }
+
+    public function setBilledCompany(?CompanyEntity $billedCompany): void
+    {
+        $this->billedCompany = $billedCompany;
+    }
+
+    public function getProducts(): ?Collection
+    {
+        return $this->products;
+    }
+
+    public function setProducts(?Collection $products): void
+    {
+        $this->products = $products;
+    }
+
+    public function getTotalPrice(): int
+    {
+        $total = 0;
+
+        if (!$this->products || $this->products->isEmpty()) {
+            return $total;
+        }
+
+        /** @var InvoiceProductLineEntity $product */
+        foreach ($this->products as $product) {
+            $total += $product->getTotal();
+        }
+
+        return $total;
     }
 
     public function toArray(): array
@@ -83,10 +142,20 @@ class InvoiceEntity
             'number' => $this->getNumber(),
             'date' => $this->getDate(),
             'dueDate' => $this->getDueDate(),
-            'companyId' => $this->getCompanyId(),
             'status' => $this->getStatus(),
             'createdAt' => $this->getCreatedAt(),
             'updatedAt' => $this->getUpdatedAt(),
+            'company' => $this->getCompany()?->toArray(),
+            'billedCompany' => $this->getBilledCompany()?->toArray(),
+            'products' => $this->getProducts()?->map(function (InvoiceProductLineEntity $item) {
+                return [
+                    'name' => $item->getProduct()->getName(),
+                    'quantity' => $item->getQuantity(),
+                    'unitPrice' => $item->getProduct()->getPrice(),
+                    'total' => $item->getTotal(),
+                ];
+            }),
+            'totalPrice' => $this->getTotalPrice(),
         ];
     }
 }

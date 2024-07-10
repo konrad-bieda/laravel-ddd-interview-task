@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Domain\Invoice\Models;
+namespace App\Domain\Shared\Models;
 
-use App\Domain\Invoice\Builders\CompanyBuilder;
-use App\Domain\Invoice\Builders\InvoiceBuilder;
+use App\Domain\Shared\Builders\CompanyBuilder;
 use App\Domain\Shared\Models\Traits\HasTimestampsColumns;
-use App\Modules\Invoices\Infrastructure\Database\Factories\CompanyFactory;
+use App\Modules\Shared\Infrastructure\Database\Factories\CompanyFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,9 +34,9 @@ class Company extends Model
         'email',
     ];
 
-    public function newEloquentBuilder($query): InvoiceBuilder
+    public function newEloquentBuilder($query): CompanyBuilder
     {
-        return new InvoiceBuilder($query);
+        return new CompanyBuilder($query);
     }
 
     protected static function newFactory(): CompanyFactory

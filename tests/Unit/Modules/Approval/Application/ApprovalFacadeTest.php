@@ -65,4 +65,24 @@ class ApprovalFacadeTest extends TestCase
         $this->expectExceptionMessage('approval status is already assigned');
         $facade->reject($dto);
     }
+
+    public function testRejectWithValidStatusShouldReturnTrue(): void
+    {
+        $dto = new ApprovalDto(
+            Uuid::fromString($this->faker->uuid()),
+            StatusEnum::DRAFT,
+            $this->faker->word(),
+        );
+
+        $dispatcher = $this->mock(Dispatcher::class, function (MockInterface $mock) {
+            $mock->shouldReceive('dispatch')->once();
+        });
+
+        /** @var ApprovalFacadeInterface $facade */
+        $facade = app(ApprovalFacadeInterface::class, [
+            'dispatcher' => $dispatcher,
+        ]);
+
+        $this->assertTrue($facade->reject($dto));
+    }
 }

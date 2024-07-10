@@ -2,9 +2,9 @@
 
 namespace App\Modules\Invoices\Infrastructure\Database\Factories;
 
-use App\Domain\Invoice\Models\Company;
 use App\Domain\Invoice\Models\Invoice;
 use App\Domain\Shared\Enums\StatusEnum;
+use App\Domain\Shared\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 

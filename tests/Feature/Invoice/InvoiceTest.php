@@ -3,6 +3,7 @@
 namespace Tests\Feature\Invoice;
 
 use App\Domain\Invoice\Models\Invoice;
+use App\Domain\Invoice\Models\InvoiceProductLine;
 use App\Domain\Shared\Enums\StatusEnum;
 use Tests\TestCase;
 
@@ -19,7 +20,7 @@ class InvoiceTest extends TestCase
 
     public function testShowShouldSucceed(): void
     {
-        $this
+        $data = $this
             ->get(route('invoice.show', [
                 'id' => $this->getRandomInvoiceId(),
             ]))
@@ -29,11 +30,39 @@ class InvoiceTest extends TestCase
                 'number',
                 'date',
                 'dueDate',
-                'companyId',
                 'status',
                 'createdAt',
                 'updatedAt',
-            ]);
+                'company',
+                'company',
+                'billedCompany',
+                'products',
+                'totalPrice',
+            ])->collect();
+
+        $this->assertEmpty($data->get('products'));
+
+        $data = $this
+            ->get(route('invoice.show', [
+                'id' => $this->getNewInvoiceWithProducts(),
+            ]))
+            ->assertOk()
+            ->assertJsonStructure([
+                'id',
+                'number',
+                'date',
+                'dueDate',
+                'status',
+                'createdAt',
+                'updatedAt',
+                'company',
+                'company',
+                'billedCompany',
+                'products',
+                'totalPrice',
+            ])->collect();
+
+        $this->assertNotEmpty($data->get('products'));
     }
 
     public function testApproveWithInvalidIdShouldFail(): void
@@ -125,9 +154,28 @@ class InvoiceTest extends TestCase
         return Invoice::factory()->create($data);
     }
 
-    private function getRandomInvoiceId(): ?string
+    private function getNewInvoiceWithProducts(array $data = []): Invoice
     {
-        return Invoice::query()->inRandomOrder()->first()?->id;
+        $invoice = Invoice::factory()->create($data);
+
+        for ($i = 1; $i <= $this->faker()->numberBetween(2, 10); $i++) {
+            InvoiceProductLine::factory()->create([
+                'invoice_id' => $invoice->id,
+            ]);
+        }
+
+        return $invoice;
+    }
+
+    private function getRandomInvoiceId(): string
+    {
+        $invoice = Invoice::factory()->create();
+
+        if (!$invoice) {
+            return $this->getNewInvoice()->id;
+        }
+
+        return$invoice->id;
     }
 
     private function getInvalidInvoiceId(): ?string
