@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Domain\Shared\Entities;
+namespace App\Domain\Invoice\Entities;
 
-use App\Domain\Shared\ValueObjects\Price;
 use Carbon\Carbon;
 
-class ProductEntity
+class CompanyEntity
 {
     public function __construct(
         private string           $name,
-        private Price            $price,
+        private string           $streetAddress,
+        private string           $city,
+        private string           $zipCode,
+        private string           $phone,
         private readonly ?string $id = null,
         private ?Carbon          $createdAt = null,
         private ?Carbon          $updatedAt = null
-    )
-    {
+    ) {
     }
 
     public function getId(): ?string
@@ -32,14 +33,44 @@ class ProductEntity
         $this->name = $name;
     }
 
-    public function getPrice(): Price
+    public function getStreetAddress(): string
     {
-        return $this->price;
+        return $this->streetAddress;
     }
 
-    public function setPrice(Price $price): void
+    public function setStreetAddress(string $streetAddress): void
     {
-        $this->price = $price;
+        $this->streetAddress = $streetAddress;
+    }
+
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): void
+    {
+        $this->city = $city;
+    }
+
+    public function getZipCode(): string
+    {
+        return $this->zipCode;
+    }
+
+    public function setZipCode(string $zipCode): void
+    {
+        $this->zipCode = $zipCode;
+    }
+
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): void
+    {
+        $this->phone = $phone;
     }
 
     public function getCreatedAt(): ?Carbon
@@ -67,8 +98,10 @@ class ProductEntity
         return [
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'unitPrice' => $this->getPrice()->getPrice(),
-            'currency' => $this->getPrice()->getCurrency(),
+            'streetAddress' => $this->getStreetAddress(),
+            'city' => $this->getCity(),
+            'zipCode' => $this->getZipCode(),
+            'phone' => $this->getPhone(),
             'createdAt' => $this->getCreatedAt(),
             'updatedAt' => $this->getUpdatedAt(),
         ];

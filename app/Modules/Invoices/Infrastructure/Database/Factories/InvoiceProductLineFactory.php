@@ -2,9 +2,9 @@
 
 namespace App\Modules\Invoices\Infrastructure\Database\Factories;
 
-use App\Domain\Invoice\Models\Invoice;
-use App\Domain\Invoice\Models\InvoiceProductLine;
-use App\Domain\Shared\Models\Product;
+use App\Modules\Invoices\Infrastructure\Models\Invoice;
+use App\Modules\Invoices\Infrastructure\Models\InvoiceProductLine;
+use App\Modules\Invoices\Infrastructure\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 

@@ -2,7 +2,6 @@
 
 namespace App\Domain\Invoice\Entities;
 
-use App\Domain\Shared\Entities\ProductEntity;
 use Carbon\Carbon;
 
 class InvoiceProductLineEntity

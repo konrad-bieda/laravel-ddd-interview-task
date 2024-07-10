@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Domain\Invoice\Models;
+namespace App\Modules\Invoices\Infrastructure\Models;
 
-use App\Domain\Invoice\Builders\InvoiceProductLineBuilder;
-use App\Domain\Shared\Models\Product;
-use App\Domain\Shared\Models\Traits\HasTimestampsColumns;
+use App\Modules\Invoices\Infrastructure\Builders\InvoiceProductLineBuilder;
 use App\Modules\Invoices\Infrastructure\Database\Factories\InvoiceProductLineFactory;
+use App\Modules\Invoices\Infrastructure\Models\Traits\HasTimestampsColumns;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

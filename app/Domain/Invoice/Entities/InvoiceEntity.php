@@ -2,8 +2,7 @@
 
 namespace App\Domain\Invoice\Entities;
 
-use App\Domain\Shared\Entities\CompanyEntity;
-use App\Domain\Shared\Enums\StatusEnum;
+use App\Domain\Invoice\Enums\StatusEnum;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 

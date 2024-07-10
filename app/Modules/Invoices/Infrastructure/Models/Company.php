@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Shared\Models;
+namespace App\Modules\Invoices\Infrastructure\Models;
 
-use App\Domain\Shared\Builders\CompanyBuilder;
-use App\Domain\Shared\Models\Traits\HasTimestampsColumns;
+use App\Modules\Invoices\Infrastructure\Builders\CompanyBuilder;
+use App\Modules\Invoices\Infrastructure\Models\Traits\HasTimestampsColumns;
 use App\Modules\Shared\Infrastructure\Database\Factories\CompanyFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

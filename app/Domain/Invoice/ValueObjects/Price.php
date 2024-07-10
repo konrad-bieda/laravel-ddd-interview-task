@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Shared\ValueObjects;
+namespace App\Domain\Invoice\ValueObjects;
 
 readonly class Price
 {

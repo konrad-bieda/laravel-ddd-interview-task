@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Shared\Models\Traits;
+namespace App\Modules\Invoices\Infrastructure\Models\Traits;
 
 use Carbon\Carbon;
 

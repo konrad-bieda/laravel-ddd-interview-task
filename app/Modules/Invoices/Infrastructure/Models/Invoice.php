@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Domain\Invoice\Models;
+namespace App\Modules\Invoices\Infrastructure\Models;
 
-use App\Domain\Invoice\Builders\InvoiceBuilder;
-use App\Domain\Shared\Enums\StatusEnum;
-use App\Domain\Shared\Models\Company;
-use App\Domain\Shared\Models\Traits\HasTimestampsColumns;
+use App\Domain\Invoice\Enums\StatusEnum;
+use App\Modules\Invoices\Infrastructure\Builders\InvoiceBuilder;
 use App\Modules\Invoices\Infrastructure\Database\Factories\InvoiceFactory;
+use App\Modules\Invoices\Infrastructure\Models\Traits\HasTimestampsColumns;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

@@ -2,7 +2,7 @@
 
 namespace App\Modules\Invoices\Infrastructure\Http\Controllers;
 
-use App\Domain\Shared\Enums\StatusEnum;
+use App\Domain\Invoice\Enums\StatusEnum;
 use App\Infrastructure\Controller;
 use App\Infrastructure\Exceptions\NotFound;
 use App\Modules\Invoices\Application\Services\InvoiceService;

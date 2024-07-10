@@ -2,16 +2,16 @@
 
 namespace App\Modules\Invoices\Repositories;
 
-use App\Domain\Invoice\Builders\InvoiceBuilder;
+use App\Domain\Invoice\Entities\CompanyEntity;
 use App\Domain\Invoice\Entities\InvoiceEntity;
 use App\Domain\Invoice\Entities\InvoiceProductLineEntity;
-use App\Domain\Invoice\Models\Invoice;
-use App\Domain\Shared\Entities\CompanyEntity;
-use App\Domain\Shared\Entities\ProductEntity;
-use App\Domain\Shared\Enums\StatusEnum;
-use App\Domain\Shared\ValueObjects\Price;
+use App\Domain\Invoice\Entities\ProductEntity;
+use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Invoice\ValueObjects\Price;
 use App\Infrastructure\Repositories\ModelRepositoryInterface;
 use App\Modules\Approval\Infrastructure\Repositories\ApprovalRepositoryInterface;
+use App\Modules\Invoices\Infrastructure\Builders\InvoiceBuilder;
+use App\Modules\Invoices\Infrastructure\Models\Invoice;
 
 class InvoiceModelRepository implements ModelRepositoryInterface, InvoiceRepositoryInterface, ApprovalRepositoryInterface
 {

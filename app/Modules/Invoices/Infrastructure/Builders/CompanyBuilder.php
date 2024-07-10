@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Shared\Builders;
+namespace App\Modules\Invoices\Infrastructure\Builders;
 
-use App\Domain\Shared\Models\Company;
 use App\Infrastructure\Builders\Traits\HasTimestampsColumns;
+use App\Modules\Invoices\Infrastructure\Models\Company;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 

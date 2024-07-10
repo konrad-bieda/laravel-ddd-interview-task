@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Approval\Application;
 
-use App\Domain\Shared\Enums\StatusEnum;
+use App\Domain\Invoice\Enums\StatusEnum;
 use App\Modules\Approval\Api\ApprovalFacadeInterface;
 use App\Modules\Approval\Api\Dto\ApprovalDto;
 use App\Modules\Approval\Api\Events\EntityApproved;

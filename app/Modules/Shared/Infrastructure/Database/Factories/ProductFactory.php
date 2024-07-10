@@ -2,7 +2,7 @@
 
 namespace App\Modules\Shared\Infrastructure\Database\Factories;
 
-use App\Domain\Shared\Models\Product;
+use App\Modules\Invoices\Infrastructure\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 

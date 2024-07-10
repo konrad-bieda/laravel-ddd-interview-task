@@ -3,7 +3,7 @@
 namespace App\Modules\Invoices\Application\Services;
 
 use App\Domain\Invoice\Entities\InvoiceEntity;
-use App\Domain\Shared\Enums\StatusEnum;
+use App\Domain\Invoice\Enums\StatusEnum;
 use App\Infrastructure\Exceptions\NotFound;
 use App\Modules\Approval\Api\ApprovalFacadeInterface;
 use App\Modules\Approval\Api\Dto\ApprovalDto;
