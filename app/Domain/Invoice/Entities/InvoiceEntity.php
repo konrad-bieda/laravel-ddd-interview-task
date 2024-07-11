@@ -129,10 +129,10 @@ class InvoiceEntity
 
         /** @var InvoiceProductLineEntity $product */
         foreach ($this->products as $product) {
-            $total += $product->getTotal();
+            $total = bcadd((string) $total, (string) $product->getTotal());
         }
 
-        return $total;
+        return (int) $total;
     }
 
     public function toArray(): array

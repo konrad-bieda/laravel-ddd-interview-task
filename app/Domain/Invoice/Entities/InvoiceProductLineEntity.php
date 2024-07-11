@@ -64,7 +64,7 @@ class InvoiceProductLineEntity
 
     public function getTotal(): int
     {
-        return $this->product->getPrice()->getPrice() * $this->quantity;
+        return (int) bcmul((string) $this->product->getPrice()->getPrice(), (string) $this->quantity);
     }
 
     public function toArray(): array
