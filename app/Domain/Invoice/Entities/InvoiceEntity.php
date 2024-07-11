@@ -151,7 +151,7 @@ class InvoiceEntity
                 return [
                     'name' => $item->getProduct()->getName(),
                     'quantity' => $item->getQuantity(),
-                    'unitPrice' => $item->getProduct()->getPrice(),
+                    'unitPrice' => $item->getProduct()->getPrice()->getPrice(),
                     'total' => $item->getTotal(),
                 ];
             }),

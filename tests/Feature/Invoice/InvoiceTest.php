@@ -63,6 +63,13 @@ class InvoiceTest extends TestCase
             ])->collect();
 
         $this->assertNotEmpty($data->get('products'));
+
+        $product = collect($data->get('products'))->first();
+        $this->assertIsArray($product);
+        $this->assertArrayHasKey('name', $product);
+        $this->assertArrayHasKey('quantity', $product);
+        $this->assertArrayHasKey('unitPrice', $product);
+        $this->assertArrayHasKey('total', $product);
     }
 
     public function testApproveWithInvalidIdShouldFail(): void
