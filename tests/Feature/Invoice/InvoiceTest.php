@@ -3,8 +3,8 @@
 namespace Tests\Feature\Invoice;
 
 use App\Domain\Invoice\Enums\StatusEnum;
-use App\Modules\Invoices\Infrastructure\Models\Invoice;
-use App\Modules\Invoices\Infrastructure\Models\InvoiceProductLine;
+use App\Modules\Invoice\Infrastructure\Models\Invoice;
+use App\Modules\Invoice\Infrastructure\Models\InvoiceProductLine;
 use Tests\TestCase;
 
 class InvoiceTest extends TestCase

@@ -1,6 +1,6 @@
 <?php
 
-use App\Modules\Invoices\Infrastructure\Http\Controllers\InvoiceController;
+use App\Modules\Invoice\Infrastructure\Http\Controllers\InvoiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

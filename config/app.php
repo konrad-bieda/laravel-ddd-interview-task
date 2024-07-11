@@ -201,7 +201,6 @@ return [
          * Modules Service Providers
          */
         App\Modules\Approval\Infrastructure\Providers\ApprovalsServiceProvider::class,
-        App\Modules\Invoices\Infrastructure\Providers\InvoiceServiceProvider::class,
     ],
 
     /*
