@@ -17,6 +17,7 @@ class CompanyEntityMapper
             city: $company->city,
             zipCode: $company->zip,
             phone: $company->phone,
+            emailAddress: $company->email,
             id: $company->id,
             createdAt: $company->created_at,
             updatedAt: $company->updated_at,

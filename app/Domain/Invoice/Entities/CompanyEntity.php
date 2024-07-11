@@ -14,6 +14,7 @@ class CompanyEntity
         private string $city,
         private string $zipCode,
         private string $phone,
+        private string $emailAddress,
         private readonly ?string $id = null,
         private ?Carbon $createdAt = null,
         private ?Carbon $updatedAt = null
@@ -95,6 +96,16 @@ class CompanyEntity
         $this->updatedAt = $updatedAt;
     }
 
+    public function getEmailAddress(): string
+    {
+        return $this->emailAddress;
+    }
+
+    public function setEmailAddress(string $email): void
+    {
+        $this->emailAddress = $email;
+    }
+
     public function toArray(): array
     {
         return [
@@ -104,6 +115,7 @@ class CompanyEntity
             'city' => $this->getCity(),
             'zipCode' => $this->getZipCode(),
             'phone' => $this->getPhone(),
+            'emailAddress' => $this->getEmailAddress(),
             'createdAt' => $this->getCreatedAt(),
             'updatedAt' => $this->getUpdatedAt(),
         ];

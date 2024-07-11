@@ -59,7 +59,7 @@ readonly class InvoiceService
         return match ($status) {
             StatusEnum::APPROVED => $this->approvalFacade->approve($dto),
             StatusEnum::REJECTED => $this->approvalFacade->reject($dto),
-            default => throw new InvalidArgumentException('Invalid DTO status.'),
+            default => throw new InvalidArgumentException('Invalid status.'),
         };
     }
 
