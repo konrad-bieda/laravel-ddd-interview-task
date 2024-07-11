@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Invoice\Infrastructure\Mappers;
+namespace App\Modules\Invoice\Application\Mappers;
 
 use App\Domain\Invoice\Entities\CompanyEntity;
 use App\Modules\Invoice\Infrastructure\Models\Company;

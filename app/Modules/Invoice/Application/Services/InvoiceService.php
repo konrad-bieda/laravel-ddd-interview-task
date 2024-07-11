@@ -9,7 +9,7 @@ use App\Domain\Invoice\Enums\StatusEnum;
 use App\Infrastructure\Exceptions\NotFound;
 use App\Modules\Approval\Api\ApprovalFacadeInterface;
 use App\Modules\Approval\Api\Dto\ApprovalDto;
-use App\Modules\Invoice\Infrastructure\Mappers\InvoiceEntityMapper;
+use App\Modules\Invoice\Application\Mappers\InvoiceEntityMapper;
 use App\Modules\Invoice\Infrastructure\Repositories\InvoiceRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
