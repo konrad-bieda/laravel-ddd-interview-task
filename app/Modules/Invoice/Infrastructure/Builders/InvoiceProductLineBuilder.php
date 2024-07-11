@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Invoice\Infrastructure\Builders;
 
 use App\Infrastructure\Builders\Traits\HasTimestampsColumns;

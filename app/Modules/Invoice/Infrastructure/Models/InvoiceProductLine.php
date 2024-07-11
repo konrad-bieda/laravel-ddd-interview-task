@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Invoice\Infrastructure\Models;
 
 use App\Modules\Invoice\Infrastructure\Builders\InvoiceProductLineBuilder;
@@ -24,7 +26,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class InvoiceProductLine extends Model
 {
-    use HasTimestampsColumns, HasUuids, HasFactory;
+    use HasTimestampsColumns;
+    use HasUuids;
+    use HasFactory;
 
     protected $fillable = [
         'invoice_id',
@@ -37,11 +41,6 @@ class InvoiceProductLine extends Model
         return new InvoiceProductLineBuilder($query);
     }
 
-    protected static function newFactory(): InvoiceProductLineFactory
-    {
-        return InvoiceProductLineFactory::new();
-    }
-
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
@@ -50,5 +49,10 @@ class InvoiceProductLine extends Model
     public function invoice(): BelongsTo
     {
         return $this->belongsTo(Invoice::class);
+    }
+
+    protected static function newFactory(): InvoiceProductLineFactory
+    {
+        return InvoiceProductLineFactory::new();
     }
 }

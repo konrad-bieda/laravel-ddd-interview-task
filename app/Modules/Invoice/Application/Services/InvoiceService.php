@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Invoice\Application\Services;
 
 use App\Domain\Invoice\Entities\InvoiceEntity;
@@ -19,10 +21,9 @@ use Ramsey\Uuid\Uuid;
 readonly class InvoiceService
 {
     public function __construct(
-        private InvoiceRepository       $repository,
+        private InvoiceRepository $repository,
         private ApprovalFacadeInterface $approvalFacade
-    )
-    {
+    ) {
     }
 
     public function getOne(string $id): ?InvoiceEntity
@@ -65,24 +66,6 @@ readonly class InvoiceService
     /**
      * @throws ValidationException
      */
-    private function validateChangeStatus(string $status): void
-    {
-        $this->validate(
-            compact('status'),
-            [
-                'status' => [
-                    Rule::in(StatusEnum::DRAFT->value)
-                ],
-            ],
-            [
-                'status' => 'Approval status is already assigned.',
-            ]
-        );
-    }
-
-    /**
-     * @throws ValidationException
-     */
     protected function validate(array $fields, array $rules, array $message = [], array $customAttributes = []): void
     {
         foreach ($fields as &$field) {
@@ -93,5 +76,23 @@ readonly class InvoiceService
         unset($field);
 
         Validator::make($fields, $rules, $message, $customAttributes)->validate();
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    private function validateChangeStatus(string $status): void
+    {
+        $this->validate(
+            compact('status'),
+            [
+                'status' => [
+                    Rule::in(StatusEnum::DRAFT->value),
+                ],
+            ],
+            [
+                'status' => 'Approval status is already assigned.',
+            ]
+        );
     }
 }

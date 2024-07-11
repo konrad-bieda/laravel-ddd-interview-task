@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Invoice\Infrastructure\Models;
 
 use App\Modules\Invoice\Infrastructure\Builders\ProductBuilder;
@@ -20,7 +22,9 @@ use Illuminate\Database\Eloquent\Model;
 */
 class Product extends Model
 {
-    use HasTimestampsColumns, HasUuids, HasFactory;
+    use HasTimestampsColumns;
+    use HasUuids;
+    use HasFactory;
 
     protected $fillable = [
         'name',

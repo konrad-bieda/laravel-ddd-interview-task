@@ -15,8 +15,7 @@ class InvoiceSeeder extends Seeder
 {
     public function __construct(
         private readonly ConnectionInterface $db
-    )
-    {
+    ) {
     }
 
     public function run(): void

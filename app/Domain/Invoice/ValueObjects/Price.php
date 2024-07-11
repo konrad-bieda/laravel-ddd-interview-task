@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\Invoice\ValueObjects;
 
 readonly class Price
 {
     public function __construct(
-        private int    $price,
+        private int $price,
         private string $currency,
-    )
-    {
+    ) {
     }
 
     public function getPrice(): int

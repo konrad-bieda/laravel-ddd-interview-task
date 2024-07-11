@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Invoice\Infrastructure\Database\Factories;
 
 use App\Modules\Invoice\Infrastructure\Models\Product;

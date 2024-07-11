@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Invoice\Infrastructure\Http\Controllers;
 
 use App\Domain\Invoice\Enums\StatusEnum;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\Invoice\Entities;
 
 use Carbon\Carbon;
@@ -7,14 +9,14 @@ use Carbon\Carbon;
 class CompanyEntity
 {
     public function __construct(
-        private string           $name,
-        private string           $streetAddress,
-        private string           $city,
-        private string           $zipCode,
-        private string           $phone,
+        private string $name,
+        private string $streetAddress,
+        private string $city,
+        private string $zipCode,
+        private string $phone,
         private readonly ?string $id = null,
-        private ?Carbon          $createdAt = null,
-        private ?Carbon          $updatedAt = null
+        private ?Carbon $createdAt = null,
+        private ?Carbon $updatedAt = null
     ) {
     }
 

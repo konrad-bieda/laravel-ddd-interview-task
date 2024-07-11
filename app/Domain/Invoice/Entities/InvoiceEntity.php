@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\Invoice\Entities;
 
 use App\Domain\Invoice\Enums\StatusEnum;
@@ -9,18 +11,17 @@ use Illuminate\Support\Collection;
 class InvoiceEntity
 {
     public function __construct(
-        private string           $number,
-        private Carbon           $date,
-        private Carbon           $dueDate,
-        private StatusEnum       $status,
+        private string $number,
+        private Carbon $date,
+        private Carbon $dueDate,
+        private StatusEnum $status,
         private readonly ?string $id = null,
-        private ?Carbon          $createdAt = null,
-        private ?Carbon          $updatedAt = null,
-        private ?CompanyEntity   $company = null,
-        private ?CompanyEntity   $billedCompany = null,
-        private ?Collection      $products = null
-    )
-    {
+        private ?Carbon $createdAt = null,
+        private ?Carbon $updatedAt = null,
+        private ?CompanyEntity $company = null,
+        private ?CompanyEntity $billedCompany = null,
+        private ?Collection $products = null
+    ) {
     }
 
     public function getId(): ?string

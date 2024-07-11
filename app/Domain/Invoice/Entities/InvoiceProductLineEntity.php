@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\Invoice\Entities;
 
 use Carbon\Carbon;
@@ -7,13 +9,12 @@ use Carbon\Carbon;
 class InvoiceProductLineEntity
 {
     public function __construct(
-        private ProductEntity    $product,
-        private int              $quantity,
+        private ProductEntity $product,
+        private int $quantity,
         private readonly ?string $id = null,
-        private ?Carbon          $createdAt = null,
-        private ?Carbon          $updatedAt = null,
-    )
-    {
+        private ?Carbon $createdAt = null,
+        private ?Carbon $updatedAt = null,
+    ) {
     }
 
     public function getId(): ?string

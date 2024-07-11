@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Invoice\Infrastructure\Models;
 
 use App\Domain\Invoice\Enums\StatusEnum;
@@ -16,7 +18,7 @@ use Illuminate\Support\Collection;
 
 /**
  * @property string $id
- * @property int $number
+ * @property string $number
  * @property Carbon $date
  * @property Carbon $due_date
  * @property string $company_id
@@ -30,7 +32,9 @@ use Illuminate\Support\Collection;
  */
 class Invoice extends Model
 {
-    use HasTimestampsColumns, HasUuids, HasFactory;
+    use HasTimestampsColumns;
+    use HasUuids;
+    use HasFactory;
 
     protected $fillable = [
         'number',
@@ -51,11 +55,6 @@ class Invoice extends Model
         return new InvoiceBuilder($query);
     }
 
-    protected static function newFactory(): InvoiceFactory
-    {
-        return InvoiceFactory::new();
-    }
-
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
@@ -64,5 +63,10 @@ class Invoice extends Model
     public function productLines(): HasMany
     {
         return $this->hasMany(InvoiceProductLine::class);
+    }
+
+    protected static function newFactory(): InvoiceFactory
+    {
+        return InvoiceFactory::new();
     }
 }

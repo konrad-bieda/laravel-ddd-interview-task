@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Approval\Infrastructure\Factories;
 
 use App\Modules\Approval\Infrastructure\Repositories\ApprovalRepositoryInterface;
@@ -24,7 +26,9 @@ class ApprovalRepositoryFactory
         }
 
         if (!in_array(ApprovalRepositoryInterface::class, class_implements($repository))) {
-            throw new LogicException('Class "' . $repository . '" does not implement "' . ApprovalRepositoryInterface::class . '".');
+            throw new LogicException(
+                'Class "' . $repository . '" does not implement "' . ApprovalRepositoryInterface::class . '".'
+            );
         }
 
         return new $repository();
