@@ -1,0 +1,82 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Modules\Invoice\Application\Services;
+
+use App\Domain\Invoice\Entities\InvoiceEntity;
+use App\Domain\Shared\Enums\StatusEnum;
+use App\Infrastructure\Exceptions\NotFound;
+use App\Modules\Approval\Api\ApprovalFacadeInterface;
+use App\Modules\Approval\Api\Dto\ApprovalDto;
+use App\Modules\Invoice\Application\Mappers\InvoiceEntityMapper;
+use App\Modules\Invoice\Infrastructure\Repositories\InvoiceRepository;
+use App\Modules\Shared\Application\Services\Service;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
+use InvalidArgumentException;
+use Ramsey\Uuid\Uuid;
+
+readonly class InvoiceService extends Service
+{
+    public function __construct(
+        private InvoiceRepository $repository,
+        private ApprovalFacadeInterface $approvalFacade
+    ) {
+    }
+
+    public function getOne(string $id): ?InvoiceEntity
+    {
+        $invoice = $this->repository->findById($id);
+
+        if (!$invoice) {
+            return null;
+        }
+
+        return InvoiceEntityMapper::map($invoice);
+    }
+
+    /**
+     * @throws NotFound|ValidationException
+     */
+    public function changeStatus(string $id, StatusEnum $status): true
+    {
+        $invoice = $this->getOne($id);
+
+        if (!$invoice) {
+            throw new NotFound('Invoice not found');
+        }
+
+        $this->validateChangeStatus($invoice->getStatus()->value);
+
+        $dto = new ApprovalDto(
+            Uuid::fromString($id),
+            $invoice->getStatus(),
+            InvoiceEntity::class
+        );
+
+        return match ($status) {
+            StatusEnum::APPROVED => $this->approvalFacade->approve($dto),
+            StatusEnum::REJECTED => $this->approvalFacade->reject($dto),
+            default => throw new InvalidArgumentException('Invalid status.'),
+        };
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    private function validateChangeStatus(string $status): void
+    {
+        $this->validate(
+            compact('status'),
+            [
+                'status' => [
+                    Rule::in(StatusEnum::DRAFT->value),
+                ],
+            ],
+            [
+                'status' => 'Approval status is already assigned.',
+            ]
+        );
+    }
+}
