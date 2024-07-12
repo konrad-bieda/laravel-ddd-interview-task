@@ -27,8 +27,8 @@ class InvoiceTest extends TestCase
             ->assertOk()
             ->assertJsonStructure([
                 'id',
-                'number',
-                'date',
+                'invoiceNumber',
+                'invoiceDate',
                 'dueDate',
                 'status',
                 'createdAt',
@@ -49,8 +49,8 @@ class InvoiceTest extends TestCase
             ->assertOk()
             ->assertJsonStructure([
                 'id',
-                'number',
-                'date',
+                'invoiceNumber',
+                'invoiceDate',
                 'dueDate',
                 'status',
                 'createdAt',

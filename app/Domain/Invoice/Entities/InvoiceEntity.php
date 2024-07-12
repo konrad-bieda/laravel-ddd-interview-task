@@ -11,8 +11,8 @@ use Illuminate\Support\Collection;
 class InvoiceEntity
 {
     public function __construct(
-        private string $number,
-        private Carbon $date,
+        private string $invoiceNumber,
+        private Carbon $invoiceDate,
         private Carbon $dueDate,
         private StatusEnum $status,
         private readonly ?string $id = null,
@@ -29,24 +29,24 @@ class InvoiceEntity
         return $this->id;
     }
 
-    public function getNumber(): string
+    public function getInvoiceNumber(): string
     {
-        return $this->number;
+        return $this->invoiceNumber;
     }
 
-    public function setNumber(string $number): void
+    public function setInvoiceNumber(string $invoiceNumber): void
     {
-        $this->number = $number;
+        $this->invoiceNumber = $invoiceNumber;
     }
 
-    public function getDate(): Carbon
+    public function getInvoiceDate(): Carbon
     {
-        return $this->date;
+        return $this->invoiceDate;
     }
 
-    public function setDate(Carbon $date): void
+    public function setInvoiceDate(Carbon $invoiceDate): void
     {
-        $this->date = $date;
+        $this->invoiceDate = $invoiceDate;
     }
 
     public function getDueDate(): Carbon
@@ -139,8 +139,8 @@ class InvoiceEntity
     {
         return [
             'id' => $this->getId(),
-            'number' => $this->getNumber(),
-            'date' => $this->getDate(),
+            'invoiceNumber' => $this->getInvoiceNumber(),
+            'invoiceDate' => $this->getInvoiceDate(),
             'dueDate' => $this->getDueDate(),
             'status' => $this->getStatus(),
             'createdAt' => $this->getCreatedAt(),

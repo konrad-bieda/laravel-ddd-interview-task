@@ -22,8 +22,8 @@ class InvoiceEntityMapper
         }
 
         return new InvoiceEntity(
-            number: $invoice->number,
-            date: $invoice->date,
+            invoiceNumber: $invoice->number,
+            invoiceDate: $invoice->date,
             dueDate: $invoice->due_date,
             status: $invoice->status,
             id: $invoice->id,

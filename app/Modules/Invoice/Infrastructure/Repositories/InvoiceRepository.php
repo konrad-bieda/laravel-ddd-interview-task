@@ -16,8 +16,8 @@ class InvoiceRepository extends ModelRepository implements ApprovalRepositoryInt
     public function create(InvoiceEntity $invoice): void
     {
         $this->query()->create([
-            'number' => $invoice->getNumber(),
-            'date' => $invoice->getDate(),
+            'number' => $invoice->getInvoiceNumber(),
+            'date' => $invoice->getInvoiceDate(),
             'due_date' => $invoice->getDueDate(),
             'company_id' => $invoice->getCompany()?->getId(),
             'status' => $invoice->getStatus(),

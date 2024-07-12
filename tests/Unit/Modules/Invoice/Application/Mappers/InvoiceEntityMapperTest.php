@@ -99,8 +99,8 @@ class InvoiceEntityMapperTest extends TestCase
 
         $this->assertInstanceOf(InvoiceEntity::class, $invoiceEntity);
         $this->assertSame($invoice->id, $invoiceEntity->getId());
-        $this->assertSame($invoice->number, $invoiceEntity->getNumber());
-        $this->assertSame($invoice->date, $invoiceEntity->getDate());
+        $this->assertSame($invoice->number, $invoiceEntity->getInvoiceNumber());
+        $this->assertSame($invoice->date, $invoiceEntity->getInvoiceDate());
         $this->assertSame($invoice->due_date, $invoiceEntity->getDueDate());
         $this->assertSame($invoice->status, $invoiceEntity->getStatus());
         $this->assertSame($invoice->created_at, $invoiceEntity->getCreatedAt());
