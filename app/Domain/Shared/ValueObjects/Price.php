@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Domain\Shared\ValueObjects;
 
+use App\Domain\Shared\Enums\CurrencyEnum;
+
 readonly class Price
 {
     public function __construct(
         private int $price,
-        private string $currency,
+        private CurrencyEnum $currency = CurrencyEnum::USD,
     ) {
     }
 
@@ -17,7 +19,7 @@ readonly class Price
         return $this->price;
     }
 
-    public function getCurrency(): string
+    public function getCurrency(): CurrencyEnum
     {
         return $this->currency;
     }

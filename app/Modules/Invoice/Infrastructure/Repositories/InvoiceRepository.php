@@ -40,9 +40,9 @@ class InvoiceRepository extends ModelRepository implements ApprovalRepositoryInt
         $invoice->save();
     }
 
-    public function findById(string $uuid): ?Invoice
+    public function findById(string $id): ?Invoice
     {
-        return $this->query()->find($uuid);
+        return $this->query()->find($id);
     }
 
     public function query(): InvoiceBuilder

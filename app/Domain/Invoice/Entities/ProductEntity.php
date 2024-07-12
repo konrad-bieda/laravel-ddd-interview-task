@@ -69,7 +69,7 @@ class ProductEntity
             'id' => $this->getId(),
             'name' => $this->getName(),
             'unitPrice' => $this->getPrice()->getPrice(),
-            'currency' => $this->getPrice()->getCurrency(),
+            'currency' => $this->getPrice()->getCurrency()->value,
             'createdAt' => $this->getCreatedAt(),
             'updatedAt' => $this->getUpdatedAt(),
         ];

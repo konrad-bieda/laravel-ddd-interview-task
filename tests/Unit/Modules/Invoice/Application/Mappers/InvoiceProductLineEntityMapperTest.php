@@ -4,6 +4,7 @@ namespace Tests\Unit\Modules\Invoice\Application\Mappers;
 
 use App\Domain\Invoice\Entities\InvoiceProductLineEntity;
 use App\Domain\Invoice\Entities\ProductEntity;
+use App\Domain\Shared\Enums\CurrencyEnum;
 use App\Modules\Invoice\Application\Mappers\InvoiceProductLineEntityMapper;
 use App\Modules\Invoice\Infrastructure\Models\InvoiceProductLine;
 use App\Modules\Invoice\Infrastructure\Models\Product;
@@ -20,7 +21,7 @@ class InvoiceProductLineEntityMapperTest extends TestCase
                 'id' => $this->faker->uuid(),
                 'name' => $this->faker->name(),
                 'price' => $this->faker->randomNumber(3),
-                'currency' => $this->faker->currencyCode(),
+                'currency' => CurrencyEnum::USD,
                 'created_at' => now(),
                 'updated_at' => now()->addWeek(),
             ];

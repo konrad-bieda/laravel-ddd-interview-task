@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Invoice\Infrastructure\Database\Factories;
 
+use App\Domain\Shared\Enums\CurrencyEnum;
 use App\Modules\Invoice\Infrastructure\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,7 +23,7 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'price' => $this->faker->randomNumber(3),
-            'currency' => $this->faker->currencyCode(),
+            'currency' => CurrencyEnum::USD,
         ];
     }
 }
