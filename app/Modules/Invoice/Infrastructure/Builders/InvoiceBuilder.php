@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Invoice\Infrastructure\Builders;
 
-use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
 use App\Infrastructure\Builders\Traits\HasTimestampsColumns;
 use App\Modules\Invoice\Infrastructure\Models\Invoice;
 use Carbon\Carbon;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Invoice\ValueObjects;
+namespace App\Domain\Shared\ValueObjects;
 
 readonly class Price
 {

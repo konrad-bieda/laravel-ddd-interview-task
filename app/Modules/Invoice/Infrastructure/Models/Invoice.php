@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Modules\Invoice\Infrastructure\Models;
 
-use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
+use App\Infrastructure\Models\Traits\HasTimestampsColumns;
 use App\Modules\Invoice\Infrastructure\Builders\InvoiceBuilder;
 use App\Modules\Invoice\Infrastructure\Database\Factories\InvoiceFactory;
-use App\Modules\Invoice\Infrastructure\Models\Traits\HasTimestampsColumns;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

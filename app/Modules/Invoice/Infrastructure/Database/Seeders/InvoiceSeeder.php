@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Invoice\Infrastructure\Database\Seeders;
 
-use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
 use Faker\Factory;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\Seeder;

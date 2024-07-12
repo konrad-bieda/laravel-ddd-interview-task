@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Invoice;
 
-use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
 use App\Modules\Invoice\Infrastructure\Models\Invoice;
 use App\Modules\Invoice\Infrastructure\Models\InvoiceProductLine;
 use Tests\TestCase;

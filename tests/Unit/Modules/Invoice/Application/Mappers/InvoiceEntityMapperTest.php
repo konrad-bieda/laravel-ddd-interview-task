@@ -5,7 +5,7 @@ namespace Tests\Unit\Modules\Invoice\Application\Mappers;
 use App\Domain\Invoice\Entities\CompanyEntity;
 use App\Domain\Invoice\Entities\InvoiceEntity;
 use App\Domain\Invoice\Entities\InvoiceProductLineEntity;
-use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
 use App\Modules\Invoice\Application\Mappers\InvoiceEntityMapper;
 use App\Modules\Invoice\Infrastructure\Models\Company;
 use App\Modules\Invoice\Infrastructure\Models\Invoice;

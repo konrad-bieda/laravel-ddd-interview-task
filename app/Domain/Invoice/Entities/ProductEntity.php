@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Invoice\Entities;
 
-use App\Domain\Invoice\ValueObjects\Price;
+use App\Domain\Shared\ValueObjects\Price;
 use Carbon\Carbon;
 
 class ProductEntity

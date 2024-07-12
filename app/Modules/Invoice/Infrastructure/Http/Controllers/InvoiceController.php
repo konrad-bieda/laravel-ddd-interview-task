@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Invoice\Infrastructure\Http\Controllers;
 
-use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
 use App\Infrastructure\Controller;
 use App\Infrastructure\Exceptions\NotFound;
 use App\Modules\Invoice\Application\Services\InvoiceService;

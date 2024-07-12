@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Invoice\Entities;
 
-use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 

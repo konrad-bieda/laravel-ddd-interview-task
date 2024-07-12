@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Modules\Invoice\Infrastructure\Repositories;
 
 use App\Domain\Invoice\Entities\InvoiceEntity;
-use App\Domain\Invoice\Enums\StatusEnum;
-use App\Infrastructure\Repositories\ModelRepositoryInterface;
+use App\Domain\Shared\Enums\StatusEnum;
+use App\Infrastructure\Repositories\ModelRepository;
 use App\Modules\Approval\Infrastructure\Repositories\ApprovalRepositoryInterface;
 use App\Modules\Invoice\Infrastructure\Builders\InvoiceBuilder;
 use App\Modules\Invoice\Infrastructure\Models\Invoice;
 
-class InvoiceRepository implements ModelRepositoryInterface, ApprovalRepositoryInterface
+class InvoiceRepository extends ModelRepository implements ApprovalRepositoryInterface
 {
     public function create(InvoiceEntity $invoice): void
     {

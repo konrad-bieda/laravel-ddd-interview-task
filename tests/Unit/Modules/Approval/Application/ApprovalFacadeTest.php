@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Modules\Approval\Application;
 
-use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
 use App\Modules\Approval\Api\ApprovalFacadeInterface;
 use App\Modules\Approval\Api\Dto\ApprovalDto;
 use App\Modules\Approval\Application\ApprovalFacade;

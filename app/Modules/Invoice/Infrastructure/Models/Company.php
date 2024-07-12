@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Modules\Invoice\Infrastructure\Models;
 
+use App\Infrastructure\Models\Traits\HasTimestampsColumns;
 use App\Modules\Invoice\Infrastructure\Builders\CompanyBuilder;
 use App\Modules\Invoice\Infrastructure\Database\Factories\CompanyFactory;
-use App\Modules\Invoice\Infrastructure\Models\Traits\HasTimestampsColumns;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Modules\Invoice\Application\Mappers;
 
 use App\Domain\Invoice\Entities\ProductEntity;
-use App\Domain\Invoice\ValueObjects\Price;
+use App\Domain\Shared\ValueObjects\Price;
 use App\Modules\Invoice\Infrastructure\Models\Product;
 
 class ProductEntityMapper

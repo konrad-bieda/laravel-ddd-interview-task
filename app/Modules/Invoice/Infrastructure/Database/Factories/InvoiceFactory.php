@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Invoice\Infrastructure\Database\Factories;
 
-use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
 use App\Modules\Invoice\Infrastructure\Models\Company;
 use App\Modules\Invoice\Infrastructure\Models\Invoice;
 use Illuminate\Database\Eloquent\Factories\Factory;

@@ -5,20 +5,19 @@ declare(strict_types=1);
 namespace App\Modules\Invoice\Application\Services;
 
 use App\Domain\Invoice\Entities\InvoiceEntity;
-use App\Domain\Invoice\Enums\StatusEnum;
+use App\Domain\Shared\Enums\StatusEnum;
 use App\Infrastructure\Exceptions\NotFound;
 use App\Modules\Approval\Api\ApprovalFacadeInterface;
 use App\Modules\Approval\Api\Dto\ApprovalDto;
 use App\Modules\Invoice\Application\Mappers\InvoiceEntityMapper;
 use App\Modules\Invoice\Infrastructure\Repositories\InvoiceRepository;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Validator;
+use App\Modules\Shared\Application\Services\Service;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Ramsey\Uuid\Uuid;
 
-readonly class InvoiceService
+readonly class InvoiceService extends Service
 {
     public function __construct(
         private InvoiceRepository $repository,
@@ -61,21 +60,6 @@ readonly class InvoiceService
             StatusEnum::REJECTED => $this->approvalFacade->reject($dto),
             default => throw new InvalidArgumentException('Invalid status.'),
         };
-    }
-
-    /**
-     * @throws ValidationException
-     */
-    protected function validate(array $fields, array $rules, array $message = [], array $customAttributes = []): void
-    {
-        foreach ($fields as &$field) {
-            if ($field instanceof Collection) {
-                $field = $field->toArray();
-            }
-        }
-        unset($field);
-
-        Validator::make($fields, $rules, $message, $customAttributes)->validate();
     }
 
     /**
